@@ -16,10 +16,12 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Button
 import numpy as np
 
-x = np.arange(0,20,0.01)
+density1 = int(input("Densidade do fluido 1 [kg/m³]: "))
+density2 = int(input("Densidade do fluido 2[kg/m³]: "))
 
-density1 = int(input("Densidade do primeiro fluido [kg/m³]: "))
-density2 = int(input("Densidade do segundo fluido [kg/m³]: "))
+x = np.arange(0,20,0.01)
+y1 = x*density1*9.8
+y2 = x*density2*9.8
 
 class Type:
     def __init__(self):
@@ -35,8 +37,8 @@ class Type:
 
     def pascal(self):
         ax1.cla()
-        ax1.plot (x, x*density1*9.8*10**(-3), label='fluido 1', linewidth=2)
-        ax1.plot (x, x*density2*9.8*10**(-3), label='fluido 2', linewidth=2)
+        ax1.plot (x, y1*10**(-3), label='fluido 1', linewidth=2)
+        ax1.plot (x, y2*10**(-3), label='fluido 2', linewidth=2)
 
         ax1.grid(True)
         ax1.legend()
@@ -45,9 +47,9 @@ class Type:
 
     def atm(self):
         ax1.cla()
-        ax1.plot (x, x*density1*9.8*9.87*10**(-6),\
+        ax1.plot (x, y1*9.87*10**(-6),\
                 label='fluido 1', linewidth=2)
-        ax1.plot (x, x*density2*9.8*9.87*10**(-6), \
+        ax1.plot (x, y2*9.87*10**(-6), \
                 label='fluido 2', linewidth=2)
 
         ax1.grid(True)
