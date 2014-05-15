@@ -12,12 +12,17 @@
 #
 # Read the density of two fluids and plot the graph height X pressure
 
-import matplotlib.pyplot as plt
-from matplotlib.widgets import Button
-import numpy as np
+try:
+    import matplotlib.pyplot as plt
+    from matplotlib.widgets import Button
+    import numpy as np
+except ImportError:
+    print ("Verifique se você possui a biblioteca matplotlib e numpy instaladas.")
+    print ("Caso contrário, instale-as com 'sudo apt-get install python-matplotlib python-numpy' (debian)")
+    raise SystemExit
 
-density1 = int(input("Densidade do fluido 1 [kg/m³]: "))
-density2 = int(input("Densidade do fluido 2[kg/m³]: "))
+density1 = float(input("Densidade do fluido 1 [kg/m³]: "))
+density2 = float(input("Densidade do fluido 2[kg/m³]: "))
 
 x = np.arange(0,20,0.01)
 y1 = x*density1*9.8
@@ -64,6 +69,5 @@ plt.ion()
 button = Button(ax1, 'click')
 unity = Type()
 button.on_clicked(unity.change)
-
 
 plt.show()
